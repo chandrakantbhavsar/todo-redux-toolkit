@@ -1,24 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import AddTodo from "./pages/AddTodo";
+import Todos from "./pages/Todos";
+import styled from "styled-components";
+import { useSelector } from 'react-redux';
+
+const StyledDiv = styled.div`
+  padding:0 0 0 30px;
+`;
 
 function App() {
+
+  const TotalTodos = useSelector(state => state.todos.todos);
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <StyledDiv>
+      <h2>Todo Application</h2>
+      <AddTodo TotalTodos={TotalTodos} />
+      <Todos TotalTodos={TotalTodos} />
+    </StyledDiv>
   );
 }
 
